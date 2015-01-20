@@ -1,2 +1,4 @@
-# incremental-game
+Incremental Game
+================
+
 An Incremental Game
