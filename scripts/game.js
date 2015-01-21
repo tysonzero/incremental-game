@@ -1,4 +1,4 @@
-var canvas = document.getElementById('game_canvas');
+var canvas = document.getElementById('game-canvas');
 var context = canvas.getContext('2d');
 var keys = [];
 var lastKeys = [];
