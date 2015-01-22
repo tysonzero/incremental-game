@@ -18,3 +18,7 @@ Resource.draw = function () {
     }
 };
 
+Resource.objects = [
+    new Resource('Wood', 100),
+    new Resource('Stone', 0)
+];
