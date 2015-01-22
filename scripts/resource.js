@@ -11,3 +11,10 @@ Resource.prototype.draw = function (i) {
     context.fillText(this.name + ': ' + this.quantity, 750, 50 + 50 * i);
 };
 
+Resource.draw = function () {
+    var i;
+    for (i = 0; i < this.objects.length; i++) {
+        this.objects[i].draw(i);
+    }
+};
+
