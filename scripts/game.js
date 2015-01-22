@@ -19,7 +19,6 @@ window.addEventListener('keyup', function (event) {
 
 canvas.addEventListener('mousedown', function (event) {
     buttons[event.button] = true;
-    console.log(mousePos);
 });
 
 canvas.addEventListener('mouseup', function (event) {
