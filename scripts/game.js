@@ -36,6 +36,8 @@ setInterval(
         context.fillStyle = '#FFFFFF';
         context.fillRect(0, 0, canvas.width, canvas.height);
 
+        Resource.draw();
+
         lastKeys = keys.slice();
         lastButtons = buttons.slice();
     },
