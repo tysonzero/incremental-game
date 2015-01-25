@@ -1,6 +1,17 @@
 var Resource = function (name, quantity) {
     this.name = name;
     this.quantity = quantity;
+
+    Object.defineProperty(this, 'rate', { get: function () {
+        var rate = 0,
+            i = 0;
+
+        for (i = 0; i < Generator.objects.length; i++) {
+            rate += Generator.objects[i].quantity * Generator.objects[i].output[Resource.objects.indexOf(this)];
+        }
+
+        return rate;
+    }});
 };
 
 Resource.prototype.draw = function (i) {
