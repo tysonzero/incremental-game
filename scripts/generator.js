@@ -15,6 +15,16 @@ Object.defineProperty(Generator.prototype, 'isAffordable', { get: function () {
     return true;
 }});
 
+Generator.prototype.purchase = function () {
+    var i = 0;
+    if (this.isAffordable) {
+        for (i = 0; i < this.cost.length; i++) {
+            Resource.objects[i].quantity -= this.cost[i];
+        }
+        this.quantity++;
+    }
+};
+
 Generator.objects = [
     new Generator('Wooden Axe', 1, [100, 0], [5, 0]),
     new Generator('Wooden Pickaxe', 0, [200, 0], [0, 1]),
