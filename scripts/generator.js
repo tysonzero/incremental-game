@@ -49,6 +49,13 @@ Generator.prototype.draw = function (i) {
     }
 };
 
+Generator.draw = function () {
+    var i;
+    for (i = 0; i < this.objects.length; i++) {
+        this.objects[i].draw(i);
+    }
+};
+
 Generator.objects = [
     new Generator('Wooden Axe', 1, [100, 0], [5, 0]),
     new Generator('Wooden Pickaxe', 0, [200, 0], [0, 1]),
