@@ -40,7 +40,7 @@ Generator.prototype.draw = function (i) {
         j;
     context.fillStyle = '#000000';
     context.fillRect(10, 10 + 75 * i, 300, 65);
-    context.fillStyle = '#FFFFFF';
+    context.fillStyle = this.isAffordable ? '#FFFFFF' : '#FF0000';
     context.textBaseline = 'top';
     context.textAlign = 'left';
     context.font = '15px Arial';
