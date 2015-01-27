@@ -34,7 +34,7 @@ Generator.prototype.update = function (i) {
 Generator.prototype.draw = function (i) {
     var count,
         j;
-    if (this.isAffordable && mousePos.x >= 10 && mousePos.x < 310 && mousePos.y >= 10 + 75 * i && mousePos.y < 75 + 75 * i) {
+    if (mousePos.x >= 10 && mousePos.x < 310 && mousePos.y >= 10 + 75 * i && mousePos.y < 75 + 75 * i && this.isAffordable) {
         context.fillStyle = '#333333';
     }
     else {
