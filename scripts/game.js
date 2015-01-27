@@ -36,6 +36,7 @@ setInterval(
         context.fillStyle = '#FFFFFF';
         context.fillRect(0, 0, canvas.width, canvas.height);
 
+        Generator.draw();
         Resource.draw();
 
         lastKeys = keys.slice();
