@@ -34,7 +34,12 @@ Generator.prototype.update = function (i) {
 Generator.prototype.draw = function (i) {
     var count,
         j;
-    context.fillStyle = '#000000';
+    if (this.isAffordable && mousePos.x >= 10 && mousePos.x < 310 && mousePos.y >= 10 + 75 * i && mousePos.y < 75 + 75 * i) {
+        context.fillStyle = '#333333';
+    }
+    else {
+        context.fillStyle = '#000000';
+    }
     context.fillRect(10, 10 + 75 * i, 300, 65);
     context.fillStyle = this.isAffordable ? '#FFFFFF' : '#FF0000';
     context.textBaseline = 'top';
