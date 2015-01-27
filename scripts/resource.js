@@ -24,6 +24,13 @@ Resource.prototype.draw = function (i) {
     context.fillText(this.name + ': ' + Math.floor(this.quantity), 750, 50 + 50 * i);
 };
 
+Resource.update = function () {
+    var i;
+    for (i = 0; i < this.objects.length; i++) {
+        this.objects[i].update();
+    }
+};
+
 Resource.draw = function () {
     var i;
     for (i = 0; i < this.objects.length; i++) {
