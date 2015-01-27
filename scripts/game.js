@@ -33,6 +33,7 @@ canvas.addEventListener('mousemove', function (event) {
 setInterval(
     function () {
         Generator.update();
+        Resource.update();
 
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.fillStyle = '#FFFFFF';
