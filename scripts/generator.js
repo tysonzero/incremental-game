@@ -6,7 +6,7 @@ var Generator = function (name, quantity, cost, output) {
 };
 
 Object.defineProperty(Generator.prototype, 'isAffordable', { get: function () {
-    var i = 0;
+    var i;
     for (i = 0; i < this.cost.length; i++) {
         if (this.cost[i] > Resource.objects[i].quantity) {
             return false;
@@ -16,7 +16,7 @@ Object.defineProperty(Generator.prototype, 'isAffordable', { get: function () {
 }});
 
 Generator.prototype.purchase = function () {
-    var i = 0;
+    var i;
     if (this.isAffordable) {
         for (i = 0; i < this.cost.length; i++) {
             Resource.objects[i].quantity -= this.cost[i];
