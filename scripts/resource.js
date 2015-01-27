@@ -12,6 +12,10 @@ Object.defineProperty(Resource.prototype, 'rate', { get: function () {
     return rate;
 }});
 
+Resource.prototype.update = function () {
+    this.quantity += this.rate / 100;
+};
+
 Resource.prototype.draw = function (i) {
     context.font = '30px Arial';
     context.fillStyle = '#000000';
