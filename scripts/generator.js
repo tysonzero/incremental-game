@@ -25,6 +25,30 @@ Generator.prototype.purchase = function () {
     }
 };
 
+Generator.prototype.draw = function (i) {
+    var count,
+        j;
+    context.fillStyle = '#000000';
+    context.fillRect(10, 10 + 75 * i, 300, 65);
+    context.fillStyle = '#FFFFFF';
+    context.textBaseline = 'top';
+    context.textAlign = 'left';
+    context.font = '15px Arial';
+    context.fillText(this.quantity + 'x ' + this.name, 20, 14 + 75 * i);
+    for (j = 0, count = 0; j < this.cost.length; j++) {
+        if (this.cost[j]) {
+            context.fillText(Resource.objects[j].name + ': ' + this.cost[j], 20 + 100 * count, 34 + 75 * i);
+            count++;
+        }
+    }
+    for (j = 0, count = 0; j < this.output.length; j++) {
+        if (this.output[j]) {
+            context.fillText(Resource.objects[j].name + '/s: ' + this.output[j], 20 + 100 * count, 54 + 75 * i);
+            count++;
+        }
+    }
+};
+
 Generator.objects = [
     new Generator('Wooden Axe', 1, [100, 0], [5, 0]),
     new Generator('Wooden Pickaxe', 0, [200, 0], [0, 1]),
