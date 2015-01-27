@@ -21,7 +21,7 @@ Resource.prototype.draw = function (i) {
     context.fillStyle = '#000000';
     context.textBaseline = 'middle';
     context.textAlign = 'right';
-    context.fillText(this.name + ': ' + this.quantity, 750, 50 + 50 * i);
+    context.fillText(this.name + ': ' + Math.floor(this.quantity), 750, 50 + 50 * i);
 };
 
 Resource.draw = function () {
