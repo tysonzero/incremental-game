@@ -25,6 +25,16 @@ Generator.prototype.purchase = function () {
     }
 };
 
+Generator.prototype.update = function (i) {
+    if (buttons[0] && !lastButtons[0]) {
+        if (mousePos.x >= 10 && mousePos.x < 310) {
+            if (mousePos.y >= 10 + 75 * i && mousePos.y < 75 + 75 * i) {
+                this.purchase();
+            }
+        }
+    }
+};
+
 Generator.prototype.draw = function (i) {
     var count,
         j;
