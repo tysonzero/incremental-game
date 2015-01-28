@@ -19,9 +19,10 @@ Resource.prototype.update = function () {
 Resource.prototype.draw = function (i) {
     context.font = '30px Arial';
     context.fillStyle = '#000000';
-    context.textBaseline = 'middle';
+    context.textBaseline = 'top';
     context.textAlign = 'right';
-    context.fillText(this.name + ': ' + Math.floor(this.quantity), 750, 50 + 50 * i);
+    context.fillText(this.name + ': ' + Math.floor(this.quantity), 790, 9 + 75 * i);
+    context.fillText(this.name + '/s: ' + this.rate, 790, 44 + 75 * i);
 };
 
 Resource.update = function () {
