@@ -36,8 +36,7 @@ Generator.prototype.draw = function (i) {
         j;
     if (mousePos.x >= 10 && mousePos.x < 310 && mousePos.y >= 10 + 75 * i && mousePos.y < 75 + 75 * i && this.isAffordable) {
         context.fillStyle = '#333333';
-    }
-    else {
+    } else {
         context.fillStyle = '#000000';
     }
     context.fillRect(10, 10 + 75 * i, 300, 65);
