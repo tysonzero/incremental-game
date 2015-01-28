@@ -1,9 +1,27 @@
 var Generator = function (name, quantity, cost, output) {
     this.name = name;
     this.quantity = quantity;
-    this.cost = cost;
-    this.output = output;
+    this.initialCost = cost;
+    this.initialOutput = output;
 };
+
+Object.defineProperty(Generator.prototype, 'cost', { get: function () {
+    var cost = [],
+        i;
+    for (i = 0; i < this.initialCost.length; i++) {
+        cost[i] = Math.floor(Math.pow(1.1, this.quantity) * this.initialCost[i]);
+    }
+    return cost;
+}});
+
+Object.defineProperty(Generator.prototype, 'output', { get: function () {
+    var output = [],
+        i;
+    for (i = 0; i < this.initialOutput.length; i++) {
+        output[i] = Math.floor(Math.pow(1.1, this.quantity) * this.initialOutput[i]);
+    }
+    return output;
+}});
 
 Object.defineProperty(Generator.prototype, 'isAffordable', { get: function () {
     var i;
