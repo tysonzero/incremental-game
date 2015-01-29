@@ -32,6 +32,7 @@ canvas.addEventListener('mousemove', function (event) {
 
 setInterval(
     function () {
+        Research.update();
         Generator.update();
         Resource.update();
 
