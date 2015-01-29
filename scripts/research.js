@@ -25,6 +25,12 @@ Research.prototype.purchase = function () {
     }
 };
 
+Research.prototype.update = function (i) {
+    if (buttons[0] && !lastButtons[0] && mousePos.x >= 320 && mousePos.x < 620 && mousePos.y >= 10 + 75 * i && mousePos.y < 75 + 75 * i) {
+        this.purchase();
+    }
+};
+
 Research.prototype.draw = function (i) {
     var count,
         j;
