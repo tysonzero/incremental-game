@@ -53,6 +53,13 @@ Research.prototype.draw = function (i) {
     }
 };
 
+Research.update = function () {
+    var i;
+    for (i = 0; i < this.objects.length; i++) {
+        this.objects[i].update(i);
+    }
+};
+
 Research.draw = function () {
     var i;
     for (i = 0; i < this.objects.length; i++) {
