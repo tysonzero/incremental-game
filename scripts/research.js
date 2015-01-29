@@ -47,6 +47,13 @@ Research.prototype.draw = function (i) {
     }
 };
 
+Research.draw = function () {
+    var i;
+    for (i = 0; i < this.objects.length; i++) {
+        this.objects[i].draw(i);
+    }
+};
+
 Research.objects = [
     new Research('Wooden Tools', false, [100, 0], [0, 1]),
     new Research('Stone Tools', false, [0, 100], [2, 3])
