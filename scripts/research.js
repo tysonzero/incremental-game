@@ -15,6 +15,16 @@ Object.defineProperty(Research.prototype, 'isAffordable', { get: function () {
     return true;
 }});
 
+Research.prototype.purchase = function () {
+    var i;
+    if (this.isAffordable) {
+        for (i = 0; i < this.cost.length; i++) {
+            Resource.objects[i].quantity -= this.cost[i];
+        }
+        this.isPurchased = true;
+    }
+};
+
 Research.objects = [
     new Research('Wooden Tools', false, [100, 0], [0, 1]),
     new Research('Stone Tools', false, [0, 100], [2, 3])
