@@ -5,6 +5,16 @@ var Generator = function (name, quantity, cost, output) {
     this.output = output;
 };
 
+Object.defineProperty(Generator.prototype, 'isUnlocked', { get: function () {
+    var i;
+    for (i = 0; i < Research.objects.length; i++) {
+        if (Research.objects[i].isPurchased && Research.objects[i].unlocks.indexOf(Generator.objects.indexOf(this)) !== -1) {
+            return true;
+        }
+    }
+    return false;
+}});
+
 Object.defineProperty(Generator.prototype, 'cost', { get: function () {
     var cost = [],
         i;
