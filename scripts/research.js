@@ -54,19 +54,23 @@ Research.prototype.draw = function (position) {
 };
 
 Research.update = function () {
-    var i;
-    for (i = 0; i < this.objects.length; i++) {
+    var position,
+        i;
+    for (position = 0, i = 0; i < this.objects.length; i++) {
         if (!this.objects[i].isPurchased) {
-            this.objects[i].update(i);
+            this.objects[i].update(position);
+            position++;
         }
     }
 };
 
 Research.draw = function () {
-    var i;
-    for (i = 0; i < this.objects.length; i++) {
+    var position,
+        i;
+    for (position = 0, i = 0; i < this.objects.length; i++) {
         if (!this.objects[i].isPurchased) {
-            this.objects[i].draw(i);
+            this.objects[i].draw(position);
+            position++;
         }
     }
 };
