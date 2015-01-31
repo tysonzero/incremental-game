@@ -16,13 +16,13 @@ Resource.prototype.update = function () {
     this.quantity += this.rate / 100;
 };
 
-Resource.prototype.draw = function (i) {
+Resource.prototype.draw = function (position) {
     context.font = '30px Arial';
     context.fillStyle = '#000000';
     context.textBaseline = 'top';
     context.textAlign = 'right';
-    context.fillText(this.name + ': ' + Math.floor(this.quantity), 790, 9 + 75 * i);
-    context.fillText(this.name + '/s: ' + this.rate, 790, 44 + 75 * i);
+    context.fillText(this.name + ': ' + Math.floor(this.quantity), 790, 9 + 75 * position);
+    context.fillText(this.name + '/s: ' + this.rate, 790, 44 + 75 * position);
 };
 
 Resource.update = function () {
