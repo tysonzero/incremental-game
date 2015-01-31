@@ -45,7 +45,7 @@ Research.prototype.draw = function (i) {
     context.textAlign = 'left';
     context.font = '15px Arial';
     context.fillText(this.name, 330, 14 + 75 * i);
-    for (j = 0, count = 0; j < this.cost.length; j++) {
+    for (count = 0, j = 0; j < this.cost.length; j++) {
         if (this.cost[j]) {
             context.fillText(Resource.objects[j].name + ': ' + this.cost[j], 330 + 100 * count, 34 + 75 * i);
             count++;
