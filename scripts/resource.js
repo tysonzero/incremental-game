@@ -41,5 +41,6 @@ Resource.draw = function () {
 
 Resource.objects = [
     new Resource('Wood', 100),
-    new Resource('Stone', 0)
+    new Resource('Stone', 0),
+    new Resource('Copper', 0)
 ];

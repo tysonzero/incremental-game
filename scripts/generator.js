@@ -97,8 +97,10 @@ Generator.draw = function () {
 };
 
 Generator.objects = [
-    new Generator('Wooden Axe', 1, [100, 0], [5, 0]),
-    new Generator('Wooden Pickaxe', 0, [200, 0], [0, 1]),
-    new Generator('Stone Axe', 0, [0, 100], [10, 0]),
-    new Generator('Stone Pickaxe', 0, [0, 200], [0, 2])
+    new Generator('Wooden Axe', 1, [100, 0, 0], [5, 0, 0]),
+    new Generator('Wooden Pickaxe', 0, [200, 0, 0], [0, 2, 0]),
+    new Generator('Stone Axe', 0, [0, 100, 0], [10, 0, 0]),
+    new Generator('Stone Pickaxe', 0, [0, 200, 0], [0, 4, 1]),
+    new Generator('Copper Axe', 0, [0, 0, 100], [25, 0, 0]),
+    new Generator('Copper Pickaxe', 0, [0, 0, 200], [0, 10, 3])
 ];
