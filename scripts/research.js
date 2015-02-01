@@ -1,8 +1,7 @@
-var Research = function (name, isPurchased, cost, unlocks) {
+var Research = function (name, isPurchased, cost) {
     this.name = name;
     this.isPurchased = isPurchased;
     this.cost = cost;
-    this.unlocks = unlocks;
 };
 
 Object.defineProperty(Research.prototype, 'isAffordable', { get: function () {
@@ -76,7 +75,7 @@ Research.draw = function () {
 };
 
 Research.objects = [
-    new Research('Wooden Tools', false, [100, 0, 0], [0, 1]),
-    new Research('Stone Tools', false, [0, 100, 0], [2, 3]),
-    new Research('Copper Tools', false, [0, 0, 100], [4, 5])
+    new Research('Wooden Tools', false, [100, 0, 0]),
+    new Research('Stone Tools', false, [0, 100, 0]),
+    new Research('Copper Tools', false, [0, 0, 100])
 ];
