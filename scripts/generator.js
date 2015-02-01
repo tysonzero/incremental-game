@@ -8,8 +8,8 @@ var Generator = function (name, quantity, cost, output, requirements) {
 
 Object.defineProperty(Generator.prototype, 'isUnlocked', { get: function () {
     var i;
-    for (i = 0; i < Research.objects.length; i++) {
-        if (Research.objects[i].isPurchased && Research.objects[i].unlocks.indexOf(Generator.objects.indexOf(this)) !== -1) {
+    for (i = 0; i < this.requirements.length; i++) {
+        if (Research.objects[this.requirements[i]].isPurchased) {
             return true;
         }
     }
