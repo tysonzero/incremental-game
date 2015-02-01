@@ -9,11 +9,11 @@ var Generator = function (name, quantity, cost, output, requirements) {
 Object.defineProperty(Generator.prototype, 'isUnlocked', { get: function () {
     var i;
     for (i = 0; i < this.requirements.length; i++) {
-        if (Research.objects[this.requirements[i]].isPurchased) {
-            return true;
+        if (!Research.objects[this.requirements[i]].isPurchased) {
+            return false;
         }
     }
-    return false;
+    return true;
 }});
 
 Object.defineProperty(Generator.prototype, 'cost', { get: function () {
