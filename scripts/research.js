@@ -67,7 +67,7 @@ Research.update = function () {
     var position,
         i;
     for (position = 0, i = 0; i < this.objects.length; i++) {
-        if (!this.objects[i].isPurchased) {
+        if (this.objects[i].isUnlocked && !this.objects[i].isPurchased) {
             this.objects[i].update(position);
             position++;
         }
@@ -78,7 +78,7 @@ Research.draw = function () {
     var position,
         i;
     for (position = 0, i = 0; i < this.objects.length; i++) {
-        if (!this.objects[i].isPurchased) {
+        if (this.objects[i].isUnlocked && !this.objects[i].isPurchased) {
             this.objects[i].draw(position);
             position++;
         }
