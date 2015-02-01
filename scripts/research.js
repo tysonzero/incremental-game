@@ -5,6 +5,16 @@ var Research = function (name, isPurchased, cost, requirements) {
     this.requirements = requirements;
 };
 
+Object.defineProperty(Research.prototype, 'isUnlocked', { get: function () {
+    var i;
+    for (i = 0; i < this.requirements.length; i++) {
+        if (!Research.objects[this.requirements[i]].isPurchased) {
+            return false;
+        }
+    }
+    return true;
+}});
+
 Object.defineProperty(Research.prototype, 'isAffordable', { get: function () {
     var i;
     for (i = 0; i < this.cost.length; i++) {
