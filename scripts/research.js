@@ -36,7 +36,7 @@ Research.prototype.purchase = function () {
 };
 
 Research.prototype.update = function (position) {
-    if (buttons[0] && !lastButtons[0] && mousePos.x >= 320 && mousePos.x < 620 && mousePos.y >= 10 + 75 * position && mousePos.y < 75 + 75 * position) {
+    if (buttons[0] && !lastButtons[0] && mousePos.x >= 320 && mousePos.x < 620 && mousePos.y >= 10 + 55 * position && mousePos.y < 55 + 55 * position) {
         this.purchase();
     }
 };
@@ -44,20 +44,20 @@ Research.prototype.update = function (position) {
 Research.prototype.draw = function (position) {
     var count,
         j;
-    if (mousePos.x >= 320 && mousePos.x < 620 && mousePos.y >= 10 + 75 * position && mousePos.y < 75 + 75 * position && this.isAffordable) {
+    if (mousePos.x >= 320 && mousePos.x < 620 && mousePos.y >= 10 + 55 * position && mousePos.y < 55 + 55 * position && this.isAffordable) {
         context.fillStyle = '#333333';
     } else {
         context.fillStyle = '#000000';
     }
-    context.fillRect(320, 10 + 75 * position, 300, 65);
+    context.fillRect(320, 10 + 55 * position, 300, 45);
     context.fillStyle = this.isAffordable ? '#FFFFFF' : '#FF0000';
     context.textBaseline = 'top';
     context.textAlign = 'left';
     context.font = '15px Arial';
-    context.fillText(this.name, 330, 14 + 75 * position);
+    context.fillText(this.name, 330, 14 + 55 * position);
     for (count = 0, j = 0; j < this.cost.length; j++) {
         if (this.cost[j]) {
-            context.fillText(Resource.objects[j].name + ': ' + this.cost[j], 330 + 100 * count, 34 + 75 * position);
+            context.fillText(Resource.objects[j].name + ': ' + this.cost[j], 330 + 100 * count, 34 + 55 * position);
             count++;
         }
     }
