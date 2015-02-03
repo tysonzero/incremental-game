@@ -28,14 +28,20 @@ Resource.prototype.draw = function (position) {
 Resource.update = function () {
     var i;
     for (i = 0; i < this.objects.length; i++) {
-        this.objects[i].update();
+        if (this.objects[i].quantity || this.objects[i].rate) {
+            this.objects[i].update();
+        }
     }
 };
 
 Resource.draw = function () {
-    var i;
-    for (i = 0; i < this.objects.length; i++) {
-        this.objects[i].draw(i);
+    var position,
+        i;
+    for (position = 0, i = 0; i < this.objects.length; i++) {
+        if (this.objects[i].quantity || this.objects[i].rate) {
+            this.objects[i].draw(position);
+            position++;
+        }
     }
 };
 
