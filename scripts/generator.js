@@ -80,19 +80,23 @@ Generator.prototype.draw = function (position) {
 };
 
 Generator.update = function () {
-    var i;
-    for (i = 0; i < this.objects.length; i++) {
+    var position,
+        i;
+    for (position = 0, i = 0; i < this.objects.length; i++) {
         if (this.objects[i].isUnlocked) {
-            this.objects[i].update(i);
+            this.objects[i].update(position);
+            position++;
         }
     }
 };
 
 Generator.draw = function () {
-    var i;
-    for (i = 0; i < this.objects.length; i++) {
+    var position,
+        i;
+    for (position = 0, i = 0; i < this.objects.length; i++) {
         if (this.objects[i].isUnlocked) {
-            this.objects[i].draw(i);
+            this.objects[i].draw(position);
+            position++;
         }
     }
 };
