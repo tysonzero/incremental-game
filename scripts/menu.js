@@ -44,6 +44,6 @@ Menu.draw = function () {
 };
 
 Menu.objects = [
-    new Menu('Generators', true),
-    new Menu('Research', false)
+    new Menu('Generators', false),
+    new Menu('Research', true)
 ];
