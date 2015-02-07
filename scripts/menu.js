@@ -19,6 +19,13 @@ Menu.prototype.draw = function (position) {
     context.fillText(this.name, 20 + 110 * position, 14);
 };
 
+Menu.draw = function () {
+    var i;
+    for (i = 0; i < this.objects.length; i++) {
+        this.objects[i].draw(i);
+    }
+};
+
 Menu.objects = [
     new Menu('Generators', true),
     new Menu('Research', false)
