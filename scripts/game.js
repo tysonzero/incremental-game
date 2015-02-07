@@ -40,6 +40,7 @@ setInterval(
         context.fillStyle = '#FFFFFF';
         context.fillRect(0, 0, canvas.width, canvas.height);
 
+        Menu.draw();
         Research.draw();
         Generator.draw();
         Resource.draw();
