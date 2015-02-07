@@ -46,7 +46,7 @@ Generator.prototype.purchase = function () {
 };
 
 Generator.prototype.update = function (position) {
-    if (buttons[0] && !lastButtons[0] && mousePos.x >= 10 && mousePos.x < 310 && mousePos.y >= 45 + 75 * position && mousePos.y < 110 + 75 * position) {
+    if (buttons[0] && !lastButtons[0] && mousePos.x >= 10 && mousePos.x < 510 && mousePos.y >= 45 + 75 * position && mousePos.y < 110 + 75 * position) {
         this.purchase();
     }
 };
@@ -54,12 +54,12 @@ Generator.prototype.update = function (position) {
 Generator.prototype.draw = function (position) {
     var count,
         j;
-    if (mousePos.x >= 10 && mousePos.x < 310 && mousePos.y >= 45 + 75 * position && mousePos.y < 110 + 75 * position && this.isAffordable) {
+    if (mousePos.x >= 10 && mousePos.x < 510 && mousePos.y >= 45 + 75 * position && mousePos.y < 110 + 75 * position && this.isAffordable) {
         context.fillStyle = '#333333';
     } else {
         context.fillStyle = '#000000';
     }
-    context.fillRect(10, 45 + 75 * position, 300, 65);
+    context.fillRect(10, 45 + 75 * position, 500, 65);
     context.fillStyle = this.isAffordable ? '#FFFFFF' : '#FF0000';
     context.textBaseline = 'top';
     context.textAlign = 'left';
