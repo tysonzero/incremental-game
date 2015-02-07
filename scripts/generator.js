@@ -93,10 +93,12 @@ Generator.update = function () {
 Generator.draw = function () {
     var position,
         i;
-    for (position = 0, i = 0; i < this.objects.length; i++) {
-        if (this.objects[i].isUnlocked) {
-            this.objects[i].draw(position);
-            position++;
+    if (Menu.objects[0].isActive) {
+        for (position = 0, i = 0; i < this.objects.length; i++) {
+            if (this.objects[i].isUnlocked) {
+                this.objects[i].draw(position);
+                position++;
+            }
         }
     }
 };
