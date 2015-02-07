@@ -3,6 +3,16 @@ var Menu = function (name, isActive) {
     this.isActive = isActive;
 };
 
+Menu.prototype.update = function (position) {
+    var i;
+    if (buttons[0] && !lastButtons[0] && mousePos.x >= 10 + 110 * position && mousePos.x < 110 + 110 * position && mousePos.y >= 10 && mousePos.y < 35) {
+        for (i = 0; i < Menu.objects.length; i++) {
+            Menu.objects[i].isActive = false;
+        }
+        this.isActive = true;
+    }
+};
+
 Menu.prototype.draw = function (position) {
     if (this.isActive) {
         context.fillStyle = '#666666';
