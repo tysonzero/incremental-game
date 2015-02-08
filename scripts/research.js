@@ -66,10 +66,12 @@ Research.prototype.draw = function (position) {
 Research.update = function () {
     var position,
         i;
-    for (position = 0, i = 0; i < this.objects.length; i++) {
-        if (this.objects[i].isUnlocked && !this.objects[i].isPurchased) {
-            this.objects[i].update(position);
-            position++;
+    if (Menu.objects[1].isActive) {
+        for (position = 0, i = 0; i < this.objects.length; i++) {
+            if (this.objects[i].isUnlocked && !this.objects[i].isPurchased) {
+                this.objects[i].update(position);
+                position++;
+            }
         }
     }
 };
