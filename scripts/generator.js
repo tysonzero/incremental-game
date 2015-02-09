@@ -54,7 +54,7 @@ Generator.prototype.update = function (position) {
 
 Generator.prototype.draw = function (position) {
     var count,
-        j;
+        i;
     if (mousePos.x >= 10 && mousePos.x < 510 && mousePos.y >= 45 + 75 * position && mousePos.y < 110 + 75 * position && this.isAffordable) {
         context.fillStyle = '#333333';
     } else {
@@ -66,15 +66,15 @@ Generator.prototype.draw = function (position) {
     context.textAlign = 'left';
     context.font = '15px Arial';
     context.fillText(this.quantity + 'x ' + this.name, 20, 49 + 75 * position);
-    for (j = 0, count = 0; j < this.cost.length; j++) {
-        if (this.cost[j]) {
-            context.fillText(this.resources[j].name + ': ' + this.cost[j], 20 + 100 * count, 69 + 75 * position);
+    for (i = 0, count = 0; i < this.cost.length; i++) {
+        if (this.cost[i]) {
+            context.fillText(this.resources[i].name + ': ' + this.cost[i], 20 + 100 * count, 69 + 75 * position);
             count++;
         }
     }
-    for (j = 0, count = 0; j < this.output.length; j++) {
-        if (this.output[j]) {
-            context.fillText(Resource.objects[j].name + '/s: ' + this.output[j], 20 + 100 * count, 89 + 75 * position);
+    for (i = 0, count = 0; i < this.output.length; i++) {
+        if (this.output[i]) {
+            context.fillText(Resource.objects[i].name + '/s: ' + this.output[i], 20 + 100 * count, 89 + 75 * position);
             count++;
         }
     }

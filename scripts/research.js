@@ -44,7 +44,7 @@ Research.prototype.update = function (position) {
 
 Research.prototype.draw = function (position) {
     var count,
-        j;
+        i;
     if (mousePos.x >= 10 && mousePos.x < 510 && mousePos.y >= 45 + 55 * position && mousePos.y < 90 + 55 * position && this.isAffordable) {
         context.fillStyle = '#333333';
     } else {
@@ -56,9 +56,9 @@ Research.prototype.draw = function (position) {
     context.textAlign = 'left';
     context.font = '15px Arial';
     context.fillText(this.name, 20, 49 + 55 * position);
-    for (count = 0, j = 0; j < this.cost.length; j++) {
-        if (this.cost[j]) {
-            context.fillText(this.resources[j].name + ': ' + this.cost[j], 20 + 100 * count, 69 + 55 * position);
+    for (count = 0, i = 0; i < this.cost.length; i++) {
+        if (this.cost[i]) {
+            context.fillText(this.resources[i].name + ': ' + this.cost[i], 20 + 100 * count, 69 + 55 * position);
             count++;
         }
     }
