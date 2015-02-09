@@ -9,7 +9,7 @@ var Research = function (name, isPurchased, resources, cost, requirements) {
 Object.defineProperty(Research.prototype, 'isUnlocked', { get: function () {
     var i;
     for (i = 0; i < this.requirements.length; i++) {
-        if (!Research.objects[this.requirements[i]].isPurchased) {
+        if (!this.requirements[i].isPurchased) {
             return false;
         }
     }
@@ -92,6 +92,8 @@ Research.draw = function () {
 
 Research.objects = [
     new Research('Wooden Tools', false, [Resource.objects[0]], [100], []),
-    new Research('Stone Tools', false, [Resource.objects[1]], [100], [0]),
-    new Research('Copper Tools', false, [Resource.objects[2]], [100], [1])
+    new Research('Stone Tools', false, [Resource.objects[1]], [100], []),
+    new Research('Copper Tools', false, [Resource.objects[2]], [100], [])
 ];
+Research.objects[1].requirements.push(Research.objects[0]);
+Research.objects[2].requirements.push(Research.objects[1]);
