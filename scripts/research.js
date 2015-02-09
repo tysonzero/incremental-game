@@ -1,6 +1,7 @@
-var Research = function (name, isPurchased, cost, requirements) {
+var Research = function (name, isPurchased, resources, cost, requirements) {
     this.name = name;
     this.isPurchased = isPurchased;
+    this.resources = resources;
     this.cost = cost;
     this.requirements = requirements;
 };
@@ -18,7 +19,7 @@ Object.defineProperty(Research.prototype, 'isUnlocked', { get: function () {
 Object.defineProperty(Research.prototype, 'isAffordable', { get: function () {
     var i;
     for (i = 0; i < this.cost.length; i++) {
-        if (this.cost[i] > Resource.objects[i].quantity) {
+        if (this.cost[i] > this.resources[i].quantity) {
             return false;
         }
     }
@@ -29,7 +30,7 @@ Research.prototype.purchase = function () {
     var i;
     if (this.isAffordable) {
         for (i = 0; i < this.cost.length; i++) {
-            Resource.objects[i].quantity -= this.cost[i];
+            this.resources[i].quantity -= this.cost[i];
         }
         this.isPurchased = true;
     }
@@ -57,7 +58,7 @@ Research.prototype.draw = function (position) {
     context.fillText(this.name, 20, 49 + 55 * position);
     for (count = 0, j = 0; j < this.cost.length; j++) {
         if (this.cost[j]) {
-            context.fillText(Resource.objects[j].name + ': ' + this.cost[j], 20 + 100 * count, 69 + 55 * position);
+            context.fillText(this.resources[j].name + ': ' + this.cost[j], 20 + 100 * count, 69 + 55 * position);
             count++;
         }
     }
@@ -90,7 +91,7 @@ Research.draw = function () {
 };
 
 Research.objects = [
-    new Research('Wooden Tools', false, [100, 0, 0], []),
-    new Research('Stone Tools', false, [0, 100, 0], [0]),
-    new Research('Copper Tools', false, [0, 0, 100], [1])
+    new Research('Wooden Tools', false, [Resource.objects[0]], [100], []),
+    new Research('Stone Tools', false, [Resource.objects[1]], [100], [0]),
+    new Research('Copper Tools', false, [Resource.objects[2]], [100], [1])
 ];

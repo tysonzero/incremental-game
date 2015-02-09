@@ -1,6 +1,7 @@
-var Generator = function (name, quantity, cost, output, requirements) {
+var Generator = function (name, quantity, resources, cost, output, requirements) {
     this.name = name;
     this.quantity = quantity;
+    this.resources = resources;
     this.initialCost = cost;
     this.output = output;
     this.requirements = requirements;
@@ -28,7 +29,7 @@ Object.defineProperty(Generator.prototype, 'cost', { get: function () {
 Object.defineProperty(Generator.prototype, 'isAffordable', { get: function () {
     var i;
     for (i = 0; i < this.cost.length; i++) {
-        if (this.cost[i] > Resource.objects[i].quantity) {
+        if (this.cost[i] > this.resources[i].quantity) {
             return false;
         }
     }
@@ -39,7 +40,7 @@ Generator.prototype.purchase = function () {
     var i;
     if (this.isAffordable) {
         for (i = 0; i < this.cost.length; i++) {
-            Resource.objects[i].quantity -= this.cost[i];
+            this.resources[i].quantity -= this.cost[i];
         }
         this.quantity++;
     }
@@ -67,7 +68,7 @@ Generator.prototype.draw = function (position) {
     context.fillText(this.quantity + 'x ' + this.name, 20, 49 + 75 * position);
     for (j = 0, count = 0; j < this.cost.length; j++) {
         if (this.cost[j]) {
-            context.fillText(Resource.objects[j].name + ': ' + this.cost[j], 20 + 100 * count, 69 + 75 * position);
+            context.fillText(this.resources[j].name + ': ' + this.cost[j], 20 + 100 * count, 69 + 75 * position);
             count++;
         }
     }
@@ -106,10 +107,10 @@ Generator.draw = function () {
 };
 
 Generator.objects = [
-    new Generator('Wooden Axe', 1, [150, 0, 0], [5, 0, 0], [0]),
-    new Generator('Wooden Pickaxe', 0, [250, 0, 0], [0, 2, 0], [0]),
-    new Generator('Stone Axe', 0, [50, 100, 0], [10, 0, 0], [1]),
-    new Generator('Stone Pickaxe', 0, [50, 200, 0], [0, 4, 1], [1]),
-    new Generator('Copper Axe', 0, [50, 0, 100], [25, 0, 0], [2]),
-    new Generator('Copper Pickaxe', 0, [50, 0, 200], [0, 10, 3], [2])
+    new Generator('Wooden Axe', 1, [Resource.objects[0]], [150], [5, 0, 0], [0]),
+    new Generator('Wooden Pickaxe', 0, [Resource.objects[0]], [250], [0, 2, 0], [0]),
+    new Generator('Stone Axe', 0, [Resource.objects[0], Resource.objects[1]], [50, 100], [10, 0, 0], [1]),
+    new Generator('Stone Pickaxe', 0, [Resource.objects[0], Resource.objects[1]], [50, 200], [0, 4, 1], [1]),
+    new Generator('Copper Axe', 0, [Resource.objects[0], Resource.objects[2]], [50, 100], [25, 0, 0], [2]),
+    new Generator('Copper Pickaxe', 0, [Resource.objects[0], Resource.objects[2]], [50, 200], [0, 10, 3], [2])
 ];
