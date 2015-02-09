@@ -33,8 +33,8 @@ canvas.addEventListener('mousemove', function (event) {
 setInterval(
     function () {
         Menu.update();
-        Research.update();
         Generator.update();
+        Research.update();
         Resource.update();
 
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -42,8 +42,8 @@ setInterval(
         context.fillRect(0, 0, canvas.width, canvas.height);
 
         Menu.draw();
-        Research.draw();
         Generator.draw();
+        Research.draw();
         Resource.draw();
 
         lastKeys = keys.slice();
