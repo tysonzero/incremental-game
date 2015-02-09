@@ -1,9 +1,9 @@
-var Generator = function (name, quantity, resources, costs, output, requirements) {
+var Generator = function (name, quantity, resources, costs, outputs, requirements) {
     this.name = name;
     this.quantity = quantity;
     this.resources = resources;
     this.initialCost = costs;
-    this.output = output;
+    this.outputs = outputs;
     this.requirements = requirements;
 };
 
@@ -72,9 +72,9 @@ Generator.prototype.draw = function (position) {
             count++;
         }
     }
-    for (i = 0, count = 0; i < this.output.length; i++) {
-        if (this.output[i]) {
-            context.fillText(this.resources[i].name + '/s: ' + this.output[i], 20 + 100 * count, 89 + 75 * position);
+    for (i = 0, count = 0; i < this.outputs.length; i++) {
+        if (this.outputs[i]) {
+            context.fillText(this.resources[i].name + '/s: ' + this.outputs[i], 20 + 100 * count, 89 + 75 * position);
             count++;
         }
     }

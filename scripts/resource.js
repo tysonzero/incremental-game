@@ -7,7 +7,7 @@ Object.defineProperty(Resource.prototype, 'rate', { get: function () {
     var rate = 0,
         i;
     for (i = 0; i < Generator.objects.length; i++) {
-        rate += Generator.objects[i].quantity * Generator.objects[i].output[Generator.objects[i].resources.indexOf(this)] || 0;
+        rate += Generator.objects[i].quantity * Generator.objects[i].outputs[Generator.objects[i].resources.indexOf(this)] || 0;
     }
     return rate;
 }});
