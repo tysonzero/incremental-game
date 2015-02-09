@@ -1,8 +1,8 @@
-var Research = function (name, isPurchased, resources, cost, requirements) {
+var Research = function (name, isPurchased, resources, costs, requirements) {
     this.name = name;
     this.isPurchased = isPurchased;
     this.resources = resources;
-    this.cost = cost;
+    this.costs = costs;
     this.requirements = requirements;
 };
 
@@ -18,8 +18,8 @@ Object.defineProperty(Research.prototype, 'isUnlocked', { get: function () {
 
 Object.defineProperty(Research.prototype, 'isAffordable', { get: function () {
     var i;
-    for (i = 0; i < this.cost.length; i++) {
-        if (this.cost[i] > this.resources[i].quantity) {
+    for (i = 0; i < this.costs.length; i++) {
+        if (this.costs[i] > this.resources[i].quantity) {
             return false;
         }
     }
@@ -29,8 +29,8 @@ Object.defineProperty(Research.prototype, 'isAffordable', { get: function () {
 Research.prototype.purchase = function () {
     var i;
     if (this.isAffordable) {
-        for (i = 0; i < this.cost.length; i++) {
-            this.resources[i].quantity -= this.cost[i];
+        for (i = 0; i < this.costs.length; i++) {
+            this.resources[i].quantity -= this.costs[i];
         }
         this.isPurchased = true;
     }
@@ -56,9 +56,9 @@ Research.prototype.draw = function (position) {
     context.textAlign = 'left';
     context.font = '15px Arial';
     context.fillText(this.name, 20, 49 + 55 * position);
-    for (count = 0, i = 0; i < this.cost.length; i++) {
-        if (this.cost[i]) {
-            context.fillText(this.resources[i].name + ': ' + this.cost[i], 20 + 100 * count, 69 + 55 * position);
+    for (count = 0, i = 0; i < this.costs.length; i++) {
+        if (this.costs[i]) {
+            context.fillText(this.resources[i].name + ': ' + this.costs[i], 20 + 100 * count, 69 + 55 * position);
             count++;
         }
     }

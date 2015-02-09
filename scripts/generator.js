@@ -1,8 +1,8 @@
-var Generator = function (name, quantity, resources, cost, output, requirements) {
+var Generator = function (name, quantity, resources, costs, output, requirements) {
     this.name = name;
     this.quantity = quantity;
     this.resources = resources;
-    this.initialCost = cost;
+    this.initialCost = costs;
     this.output = output;
     this.requirements = requirements;
 };
@@ -17,19 +17,19 @@ Object.defineProperty(Generator.prototype, 'isUnlocked', { get: function () {
     return true;
 }});
 
-Object.defineProperty(Generator.prototype, 'cost', { get: function () {
-    var cost = [],
+Object.defineProperty(Generator.prototype, 'costs', { get: function () {
+    var costs = [],
         i;
     for (i = 0; i < this.initialCost.length; i++) {
-        cost[i] = Math.floor(Math.pow(1.1, this.quantity) * this.initialCost[i]);
+        costs[i] = Math.floor(Math.pow(1.1, this.quantity) * this.initialCost[i]);
     }
-    return cost;
+    return costs;
 }});
 
 Object.defineProperty(Generator.prototype, 'isAffordable', { get: function () {
     var i;
-    for (i = 0; i < this.cost.length; i++) {
-        if (this.cost[i] > this.resources[i].quantity) {
+    for (i = 0; i < this.costs.length; i++) {
+        if (this.costs[i] > this.resources[i].quantity) {
             return false;
         }
     }
@@ -39,8 +39,8 @@ Object.defineProperty(Generator.prototype, 'isAffordable', { get: function () {
 Generator.prototype.purchase = function () {
     var i;
     if (this.isAffordable) {
-        for (i = 0; i < this.cost.length; i++) {
-            this.resources[i].quantity -= this.cost[i];
+        for (i = 0; i < this.costs.length; i++) {
+            this.resources[i].quantity -= this.costs[i];
         }
         this.quantity++;
     }
@@ -66,9 +66,9 @@ Generator.prototype.draw = function (position) {
     context.textAlign = 'left';
     context.font = '15px Arial';
     context.fillText(this.quantity + 'x ' + this.name, 20, 49 + 75 * position);
-    for (i = 0, count = 0; i < this.cost.length; i++) {
-        if (this.cost[i]) {
-            context.fillText(this.resources[i].name + ': ' + this.cost[i], 20 + 100 * count, 69 + 75 * position);
+    for (i = 0, count = 0; i < this.costs.length; i++) {
+        if (this.costs[i]) {
+            context.fillText(this.resources[i].name + ': ' + this.costs[i], 20 + 100 * count, 69 + 75 * position);
             count++;
         }
     }
