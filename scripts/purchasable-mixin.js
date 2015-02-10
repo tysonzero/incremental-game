@@ -10,3 +10,12 @@ PurchasableMixin.prototype.isAffordable = { get: function () {
     return true;
 }};
 
+PurchasableMixin.prototype.purchase = { value: function() {
+    var i;
+    if (this.isAffordable) {
+        for (i = 0; i < this.costs.length; i++) {
+            this.resources[i].quantity -= this.costs[i];
+        }
+        this.quantity++;
+    }
+}};
