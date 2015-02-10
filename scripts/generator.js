@@ -19,14 +19,19 @@ Object.defineProperty(Generator.prototype, 'isUnlocked', { get: function () {
     return true;
 }});
 
-Object.defineProperty(Generator.prototype, 'costs', { get: function () {
-    var costs = [],
-        i;
-    for (i = 0; i < this.initialCost.length; i++) {
-        costs[i] = Math.floor(Math.pow(1.1, this.quantity) * this.initialCost[i]);
+Object.defineProperty(Generator.prototype, 'costs', {
+    get: function () {
+        var costs = [],
+            i;
+        for (i = 0; i < this.initialCost.length; i++) {
+            costs[i] = Math.floor(Math.pow(1.1, this.quantity) * this.initialCost[i]);
+        }
+        return costs;
+    },
+    set: function (value) {
+        this.initialCost = value;
     }
-    return costs;
-}});
+});
 
 Generator.prototype.update = function (position) {
     if (buttons[0] && !lastButtons[0] && mousePos.x >= 10 && mousePos.x < 510 && mousePos.y >= 45 + 75 * position && mousePos.y < 110 + 75 * position) {
