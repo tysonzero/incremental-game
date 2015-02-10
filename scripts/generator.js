@@ -22,13 +22,13 @@ Object.defineProperty(Generator.prototype, 'costs', {
     get: function () {
         var costs = [],
             i;
-        for (i = 0; i < this.initialCost.length; i++) {
-            costs[i] = Math.floor(Math.pow(1.1, this.quantity) * this.initialCost[i]);
+        for (i = 0; i < this._costs.length; i++) {
+            costs[i] = Math.floor(Math.pow(1.1, this.quantity) * this._costs[i]);
         }
         return costs;
     },
     set: function (value) {
-        this.initialCost = value;
+        this._costs = value;
     }
 });
 
