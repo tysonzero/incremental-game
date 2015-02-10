@@ -1,9 +1,10 @@
-var Research = function (name, quantity, resources, costs, requirements) {
-    this.name = name;
-    this.quantity = quantity;
-    this.resources = resources;
-    this.costs = costs;
-    this.requirements = requirements;
+var Research = function (options) {
+    options = options || {};
+    this.name = options.name;
+    this.quantity = options.quantity || 0;
+    this.resources = options.resources || [];
+    this.costs = options.costs || [];
+    this.requirements = options.requirements || [];
 };
 
 Object.defineProperties(Research.prototype, PurchasableMixin.prototype);
@@ -73,9 +74,9 @@ Research.draw = function () {
 };
 
 Research.objects = [
-    new Research('Wooden Tools', 0, [Resource.objects[0]], [100], []),
-    new Research('Stone Tools', 0, [Resource.objects[1]], [100], []),
-    new Research('Copper Tools', 0, [Resource.objects[2]], [100], [])
+    new Research({name: 'Wooden Tools', resources: [Resource.objects[0]], costs: [100]}),
+    new Research({name: 'Stone Tools', resources: [Resource.objects[1]], costs: [100]}),
+    new Research({name: 'Copper Tools', resources: [Resource.objects[2]], costs: [100]})
 ];
 Research.objects[1].requirements.push(Research.objects[0]);
 Research.objects[2].requirements.push(Research.objects[1]);
