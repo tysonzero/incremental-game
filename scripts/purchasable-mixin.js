@@ -1,4 +1,9 @@
-var PurchasableMixin = function () {};
+var PurchasableMixin = function (options) {
+    options = options || {};
+    this.quantity = options.quantity || 0;
+    this.resources = options.resources || [];
+    this.costs = options.costs || [];
+};
 
 PurchasableMixin.prototype.isAffordable = { get: function () {
     var i;
