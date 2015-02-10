@@ -1,6 +1,6 @@
-var Research = function (name, isPurchased, resources, costs, requirements) {
+var Research = function (name, quantity, resources, costs, requirements) {
     this.name = name;
-    this.isPurchased = isPurchased;
+    this.quantity = quantity;
     this.resources = resources;
     this.costs = costs;
     this.requirements = requirements;
@@ -9,7 +9,7 @@ var Research = function (name, isPurchased, resources, costs, requirements) {
 Object.defineProperty(Research.prototype, 'isUnlocked', { get: function () {
     var i;
     for (i = 0; i < this.requirements.length; i++) {
-        if (!this.requirements[i].isPurchased) {
+        if (!this.requirements[i].quantity) {
             return false;
         }
     }
@@ -32,7 +32,7 @@ Research.prototype.purchase = function () {
         for (i = 0; i < this.costs.length; i++) {
             this.resources[i].quantity -= this.costs[i];
         }
-        this.isPurchased = true;
+        this.quantity++;
     }
 };
 
@@ -69,7 +69,7 @@ Research.update = function () {
         i;
     if (Menu.objects[1].isActive) {
         for (position = 0, i = 0; i < this.objects.length; i++) {
-            if (this.objects[i].isUnlocked && !this.objects[i].isPurchased) {
+            if (this.objects[i].isUnlocked && !this.objects[i].quantity) {
                 this.objects[i].update(position);
                 position++;
             }
@@ -82,7 +82,7 @@ Research.draw = function () {
         i;
     if (Menu.objects[1].isActive) {
         for (position = 0, i = 0; i < this.objects.length; i++) {
-            if (this.objects[i].isUnlocked && !this.objects[i].isPurchased) {
+            if (this.objects[i].isUnlocked && !this.objects[i].quantity) {
                 this.objects[i].draw(position);
                 position++;
             }

@@ -10,7 +10,7 @@ var Generator = function (name, quantity, resources, costs, outputs, requirement
 Object.defineProperty(Generator.prototype, 'isUnlocked', { get: function () {
     var i;
     for (i = 0; i < this.requirements.length; i++) {
-        if (!this.requirements[i].isPurchased) {
+        if (!this.requirements[i].quantity) {
             return false;
         }
     }
