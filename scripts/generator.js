@@ -7,6 +7,8 @@ var Generator = function (name, quantity, resources, costs, outputs, requirement
     this.requirements = requirements;
 };
 
+Object.defineProperties(Generator.prototype, PurchasableMixin.prototype);
+
 Object.defineProperty(Generator.prototype, 'isUnlocked', { get: function () {
     var i;
     for (i = 0; i < this.requirements.length; i++) {
@@ -25,26 +27,6 @@ Object.defineProperty(Generator.prototype, 'costs', { get: function () {
     }
     return costs;
 }});
-
-Object.defineProperty(Generator.prototype, 'isAffordable', { get: function () {
-    var i;
-    for (i = 0; i < this.costs.length; i++) {
-        if (this.costs[i] > this.resources[i].quantity) {
-            return false;
-        }
-    }
-    return true;
-}});
-
-Generator.prototype.purchase = function () {
-    var i;
-    if (this.isAffordable) {
-        for (i = 0; i < this.costs.length; i++) {
-            this.resources[i].quantity -= this.costs[i];
-        }
-        this.quantity++;
-    }
-};
 
 Generator.prototype.update = function (position) {
     if (buttons[0] && !lastButtons[0] && mousePos.x >= 10 && mousePos.x < 510 && mousePos.y >= 45 + 75 * position && mousePos.y < 110 + 75 * position) {
