@@ -1,9 +1,7 @@
 var Generator = function (options) {
+    PurchasableMixin.call(this, options);
     options = options || {};
     this.name = options.name;
-    this.quantity = options.quantity || 0;
-    this.resources = options.resources || [];
-    this.costs = options.costs || [];
     this.outputs = options.outputs || [];
     this.requirements = options.requirements || [];
 };
