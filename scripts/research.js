@@ -1,21 +1,12 @@
 var Research = function (options) {
+    ResearchableMixin.call(this, options);
     PurchasableMixin.call(this, options);
     options = options || {};
     this.name = options.name;
-    this.requirements = options.requirements || [];
 };
 
+Object.defineProperties(Research.prototype, ResearchableMixin.prototype);
 Object.defineProperties(Research.prototype, PurchasableMixin.prototype);
-
-Object.defineProperty(Research.prototype, 'isUnlocked', { get: function () {
-    var i;
-    for (i = 0; i < this.requirements.length; i++) {
-        if (!this.requirements[i].quantity) {
-            return false;
-        }
-    }
-    return true;
-}});
 
 Research.prototype.update = function (position) {
     if (buttons[0] && !lastButtons[0] && mousePos.x >= 10 && mousePos.x < 510 && mousePos.y >= 45 + 55 * position && mousePos.y < 90 + 55 * position) {

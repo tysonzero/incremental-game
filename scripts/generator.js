@@ -1,22 +1,13 @@
 var Generator = function (options) {
+    ResearchableMixin.call(this, options);
     PurchasableMixin.call(this, options);
     options = options || {};
     this.name = options.name;
     this.outputs = options.outputs || [];
-    this.requirements = options.requirements || [];
 };
 
+Object.defineProperties(Generator.prototype, ResearchableMixin.prototype);
 Object.defineProperties(Generator.prototype, PurchasableMixin.prototype);
-
-Object.defineProperty(Generator.prototype, 'isUnlocked', { get: function () {
-    var i;
-    for (i = 0; i < this.requirements.length; i++) {
-        if (!this.requirements[i].quantity) {
-            return false;
-        }
-    }
-    return true;
-}});
 
 Object.defineProperty(Generator.prototype, 'costs', {
     get: function () {
