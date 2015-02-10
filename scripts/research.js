@@ -73,9 +73,9 @@ Research.draw = function () {
 };
 
 Research.objects = [
-    new Research('Wooden Tools', false, [Resource.objects[0]], [100], []),
-    new Research('Stone Tools', false, [Resource.objects[1]], [100], []),
-    new Research('Copper Tools', false, [Resource.objects[2]], [100], [])
+    new Research('Wooden Tools', 0, [Resource.objects[0]], [100], []),
+    new Research('Stone Tools', 0, [Resource.objects[1]], [100], []),
+    new Research('Copper Tools', 0, [Resource.objects[2]], [100], [])
 ];
 Research.objects[1].requirements.push(Research.objects[0]);
 Research.objects[2].requirements.push(Research.objects[1]);
