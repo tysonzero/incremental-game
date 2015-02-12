@@ -1,6 +1,7 @@
-var Menu = function (name, isActive) {
-    this.name = name;
-    this.isActive = isActive;
+var Menu = function (options) {
+    options = options || {};
+    this.name = options.name;
+    this.isActive = options.isActive || false;
 };
 
 Menu.prototype.update = function (position) {
@@ -44,6 +45,6 @@ Menu.draw = function () {
 };
 
 Menu.objects = [
-    new Menu('Generators', false),
-    new Menu('Research', true)
+    new Menu({name: 'Generators'}),
+    new Menu({name: 'Research', isActive: true})
 ];
