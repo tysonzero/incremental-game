@@ -1,6 +1,7 @@
-var Resource = function (name, quantity) {
-    this.name = name;
-    this.quantity = quantity;
+var Resource = function (options) {
+    options = options || {};
+    this.name = options.name;
+    this.quantity = options.quantity || 0;
 };
 
 Object.defineProperty(Resource.prototype, 'rate', { get: function () {
@@ -46,7 +47,7 @@ Resource.draw = function () {
 };
 
 Resource.objects = [
-    new Resource('Wood', 100),
-    new Resource('Stone', 0),
-    new Resource('Copper', 0)
+    new Resource({name: 'Wood', quantity: 100}),
+    new Resource({name: 'Stone'}),
+    new Resource({name: 'Copper'})
 ];
