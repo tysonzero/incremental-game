@@ -43,13 +43,13 @@ Generator.prototype.draw = function (position) {
     context.textAlign = 'left';
     context.font = '15px Arial';
     context.fillText(this.quantity + 'x ' + this.name, 20, 49 + 75 * position);
-    for (i = 0, count = 0; i < this.costs.length; i++) {
+    for (count = 0, i = 0; i < this.costs.length; i++) {
         if (this.costs[i]) {
             context.fillText(this.resources[i].name + ': ' + this.costs[i], 20 + 100 * count, 69 + 75 * position);
             count++;
         }
     }
-    for (i = 0, count = 0; i < this.outputs.length; i++) {
+    for (count = 0, i = 0; i < this.outputs.length; i++) {
         if (this.outputs[i]) {
             context.fillText(this.resources[i].name + '/s: ' + this.outputs[i], 20 + 100 * count, 89 + 75 * position);
             count++;
