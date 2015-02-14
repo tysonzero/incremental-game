@@ -1,12 +1,16 @@
 var Menu = function (options) {
+    ButtonMixin.call(this, options);
     options = options || {};
     this.name = options.name;
     this.isActive = options.isActive || false;
+    this.size = options.size || {x: 100, y: 25};
 };
 
-Menu.prototype.update = function (position) {
+Object.defineProperties(Menu.prototype, ButtonMixin.prototype);
+
+Menu.prototype.update = function () {
     var i;
-    if (buttons[0] && !lastButtons[0] && mousePos.x >= 10 + 110 * position && mousePos.x < 110 + 110 * position && mousePos.y >= 10 && mousePos.y < 35) {
+    if (this.isClicked) {
         for (i = 0; i < Menu.objects.length; i++) {
             Menu.objects[i].isActive = false;
         }
@@ -14,33 +18,35 @@ Menu.prototype.update = function (position) {
     }
 };
 
-Menu.prototype.draw = function (position) {
+Menu.prototype.draw = function () {
     if (this.isActive) {
         context.fillStyle = '#666666';
-    } else if (mousePos.x >= 10 + 110 * position && mousePos.x < 110 + 110 * position && mousePos.y >= 10 && mousePos.y < 35) {
+    } else if (this.isFocused) {
         context.fillStyle = '#333333';
     } else {
         context.fillStyle = '#000000';
     }
-    context.fillRect(10 + 110 * position, 10, 100, 25);
+    context.fillRect(this.pos.x, this.pos.y, this.size.x, this.size.y);
     context.fillStyle = '#FFFFFF';
     context.textBaseline = 'top';
     context.textAlign = 'left';
     context.font = '15px Arial';
-    context.fillText(this.name, 20 + 110 * position, 14);
+    context.fillText(this.name, this.pos.x + 10, this.pos.y + 4);
 };
 
 Menu.update = function () {
     var i;
     for (i = 0; i < this.objects.length; i++) {
-        this.objects[i].update(i);
+        this.objects[i].pos = {x: 10 + 110 * i, y: 10};
+        this.objects[i].update();
     }
 };
 
 Menu.draw = function () {
     var i;
     for (i = 0; i < this.objects.length; i++) {
-        this.objects[i].draw(i);
+        this.objects[i].pos = {x: 10 + 110 * i, y: 10};
+        this.objects[i].draw();
     }
 };
 
