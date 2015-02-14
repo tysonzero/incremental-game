@@ -1,36 +1,35 @@
 var Research = function (options) {
     ResearchableMixin.call(this, options);
     PurchasableMixin.call(this, options);
+    ButtonMixin.call(this, options);
     options = options || {};
     this.name = options.name;
+    this.size = options.size || {x: 500, y: 45};
 };
 
 Object.defineProperties(Research.prototype, ResearchableMixin.prototype);
 Object.defineProperties(Research.prototype, PurchasableMixin.prototype);
+Object.defineProperties(Research.prototype, ButtonMixin.prototype);
 
-Research.prototype.update = function (position) {
-    if (buttons[0] && !lastButtons[0] && mousePos.x >= 10 && mousePos.x < 510 && mousePos.y >= 45 + 55 * position && mousePos.y < 90 + 55 * position) {
+Research.prototype.update = function () {
+    if (this.isClicked) {
         this.purchase();
     }
 };
 
-Research.prototype.draw = function (position) {
+Research.prototype.draw = function () {
     var count,
         i;
-    if (mousePos.x >= 10 && mousePos.x < 510 && mousePos.y >= 45 + 55 * position && mousePos.y < 90 + 55 * position && this.isAffordable) {
-        context.fillStyle = '#333333';
-    } else {
-        context.fillStyle = '#000000';
-    }
-    context.fillRect(10, 45 + 55 * position, 500, 45);
+    context.fillStyle = this.isFocused && this.isAffordable ? '#333333' : '#000000';
+    context.fillRect(this.pos.x, this.pos.y, this.size.x, this.size.y);
     context.fillStyle = this.isAffordable ? '#FFFFFF' : '#FF0000';
     context.textBaseline = 'top';
     context.textAlign = 'left';
     context.font = '15px Arial';
-    context.fillText(this.name, 20, 49 + 55 * position);
+    context.fillText(this.name, this.pos.x + 10, this.pos.y + 4);
     for (count = 0, i = 0; i < this.costs.length; i++) {
         if (this.costs[i]) {
-            context.fillText(this.resources[i].name + ': ' + this.costs[i], 20 + 100 * count, 69 + 55 * position);
+            context.fillText(this.resources[i].name + ': ' + this.costs[i], this.pos.x + 10 + 100 * count, this.pos.y + 24);
             count++;
         }
     }
@@ -42,7 +41,8 @@ Research.update = function () {
     if (Menu.objects[1].isActive) {
         for (position = 0, i = 0; i < this.objects.length; i++) {
             if (this.objects[i].isUnlocked && !this.objects[i].quantity) {
-                this.objects[i].update(position);
+                this.objects[i].pos = {x: 10, y: 45 + 55 * position};
+                this.objects[i].update();
                 position++;
             }
         }
@@ -55,7 +55,8 @@ Research.draw = function () {
     if (Menu.objects[1].isActive) {
         for (position = 0, i = 0; i < this.objects.length; i++) {
             if (this.objects[i].isUnlocked && !this.objects[i].quantity) {
-                this.objects[i].draw(position);
+                this.objects[i].pos = {x: 10, y: 45 + 55 * position};
+                this.objects[i].draw();
                 position++;
             }
         }
