@@ -27,6 +27,10 @@ Object.defineProperty(Generator.prototype, 'costs', {
 });
 
 Generator.prototype.update = function () {
+    var i;
+    for (i = 0; i < this.outputs.length; i++) {
+        this.resources[i].quantity += this.quantity * this.outputs[i] / 100;
+    }
     if (this.isClicked) {
         this.purchase();
     }

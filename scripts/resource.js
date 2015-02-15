@@ -1,20 +1,13 @@
 var Resource = function (options) {
     options = options || {};
     this.name = options.name;
-    this.quantity = options.quantity || 0;
+    this.lastQuantity = this.quantity = options.quantity || 0;
+    this.rate = 0;
 };
 
-Object.defineProperty(Resource.prototype, 'rate', { get: function () {
-    var rate = 0,
-        i;
-    for (i = 0; i < Generator.objects.length; i++) {
-        rate += Generator.objects[i].quantity * Generator.objects[i].outputs[Generator.objects[i].resources.indexOf(this)] || 0;
-    }
-    return rate;
-}});
-
 Resource.prototype.update = function () {
-    this.quantity += this.rate / 100;
+    this.rate = (this.quantity - this.lastQuantity) * 100;
+    this.lastQuantity = this.quantity;
 };
 
 Resource.prototype.draw = function (position) {
@@ -23,7 +16,7 @@ Resource.prototype.draw = function (position) {
     context.textBaseline = 'top';
     context.textAlign = 'right';
     context.fillText(this.name + ': ' + Math.floor(this.quantity), 790, 9 + 75 * position);
-    context.fillText(this.name + '/s: ' + this.rate, 790, 44 + 75 * position);
+    context.fillText(this.name + '/s: ' + Math.round(this.rate), 790, 44 + 75 * position);
 };
 
 Resource.update = function () {
