@@ -59,28 +59,28 @@ Generator.prototype.draw = function () {
 Generator.update = function () {
     var position,
         i;
-    if (Menu.objects[0].isActive) {
-        for (position = 0, i = 0; i < this.objects.length; i++) {
-            if (this.objects[i].isUnlocked) {
-                this.objects[i].pos = {x: 10, y: 45 + 75 * position};
-                this.objects[i].update();
-                position++;
-            }
+    for (position = 0, i = 0; i < this.objects.length; i++) {
+        if (Menu.objects[0].isActive && this.objects[i].isUnlocked) {
+            this.objects[i].pos = {x: 10, y: 45 + 75 * position};
+            position++;
+        } else {
+            this.objects[i].pos = {};
         }
+        this.objects[i].update();
     }
 };
 
 Generator.draw = function () {
     var position,
         i;
-    if (Menu.objects[0].isActive) {
-        for (position = 0, i = 0; i < this.objects.length; i++) {
-            if (this.objects[i].isUnlocked) {
-                this.objects[i].pos = {x: 10, y: 45 + 75 * position};
-                this.objects[i].draw();
-                position++;
-            }
+    for (position = 0, i = 0; i < this.objects.length; i++) {
+        if (Menu.objects[0].isActive && this.objects[i].isUnlocked) {
+            this.objects[i].pos = {x: 10, y: 45 + 75 * position};
+            position++;
+        } else {
+            this.objects[i].pos = {};
         }
+        this.objects[i].draw();
     }
 };
 
