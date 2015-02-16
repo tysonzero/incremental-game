@@ -39,34 +39,6 @@ Research.prototype.draw = function () {
     }
 };
 
-Research.update = function () {
-    var position,
-        i;
-    for (position = 0, i = 0; i < this.objects.length; i++) {
-        if (Menu.objects[1].isActive && this.objects[i].isUnlocked && !this.objects[i].quantity) {
-            this.objects[i].pos = {x: 10, y: 45 + 55 * position};
-            position++;
-        } else {
-            this.objects[i].pos = {};
-        }
-        this.objects[i].update();
-    }
-};
-
-Research.draw = function () {
-    var position,
-        i;
-    for (position = 0, i = 0; i < this.objects.length; i++) {
-        if (Menu.objects[1].isActive && this.objects[i].isUnlocked && !this.objects[i].quantity) {
-            this.objects[i].pos = {x: 10, y: 45 + 55 * position};
-            position++;
-        } else {
-            this.objects[i].pos = {};
-        }
-        this.objects[i].draw();
-    }
-};
-
 Research.objects = [
     new Research({name: 'Wooden Tools', resources: [Resource.objects[0]], costs: [100]}),
     new Research({name: 'Stone Tools', resources: [Resource.objects[1]], costs: [100]}),

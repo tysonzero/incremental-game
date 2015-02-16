@@ -64,34 +64,6 @@ Generator.prototype.draw = function () {
     }
 };
 
-Generator.update = function () {
-    var position,
-        i;
-    for (position = 0, i = 0; i < this.objects.length; i++) {
-        if (Menu.objects[0].isActive && this.objects[i].isUnlocked) {
-            this.objects[i].pos = {x: 10, y: 45 + 75 * position};
-            position++;
-        } else {
-            this.objects[i].pos = {};
-        }
-        this.objects[i].update();
-    }
-};
-
-Generator.draw = function () {
-    var position,
-        i;
-    for (position = 0, i = 0; i < this.objects.length; i++) {
-        if (Menu.objects[0].isActive && this.objects[i].isUnlocked) {
-            this.objects[i].pos = {x: 10, y: 45 + 75 * position};
-            position++;
-        } else {
-            this.objects[i].pos = {};
-        }
-        this.objects[i].draw();
-    }
-};
-
 Generator.objects = [
     new Generator({name: 'Wooden Axe', quantity: 1, resources: [Resource.objects[0]], costs: [150], outputs: [5], requirements: [Research.objects[0]]}),
     new Generator({name: 'Wooden Pickaxe', resources: [Resource.objects[0], Resource.objects[1]], costs: [250, 0], outputs: [0, 2], requirements: [Research.objects[0]]}),
