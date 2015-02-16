@@ -9,6 +9,34 @@ var Menu = function (options) {
 
 Object.defineProperties(Menu.prototype, ButtonMixin.prototype);
 
+Menu.prototype.updateButtons = function () {
+    var offset,
+        i;
+    for (offset = 0, i = 0; i < this.buttons.length; i++) {
+        if (this.isActive && this.buttons[i].isVisible) {
+            this.buttons[i].pos = {x: 10, y: 45 + offset};
+            offset += this.buttons[i].size.y + 10;
+        } else {
+            this.buttons[i].pos = {};
+        }
+        this.buttons[i].update();
+    }
+};
+
+Menu.prototype.drawButtons = function () {
+    var offset,
+        i;
+    for (offset = 0, i = 0; i < this.buttons.length; i++) {
+        if (this.isActive && this.buttons[i].isVisible) {
+            this.buttons[i].pos = {x: 10, y: 45 + offset};
+            offset += this.buttons[i].size.y + 10;
+        } else {
+            this.buttons[i].pos = {};
+        }
+        this.buttons[i].draw();
+    }
+};
+
 Menu.prototype.update = function () {
     var i;
     if (this.isClicked) {
