@@ -26,6 +26,10 @@ Object.defineProperty(Generator.prototype, 'costs', {
     }
 });
 
+Object.defineProperty(Generator.prototype, 'isVisible', { get: function () {
+    return this.isUnlocked;
+}});
+
 Generator.prototype.update = function () {
     var i;
     for (i = 0; i < this.outputs.length; i++) {

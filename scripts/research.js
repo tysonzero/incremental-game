@@ -11,6 +11,10 @@ Object.defineProperties(Research.prototype, ResearchableMixin.prototype);
 Object.defineProperties(Research.prototype, PurchasableMixin.prototype);
 Object.defineProperties(Research.prototype, ButtonMixin.prototype);
 
+Object.defineProperty(Research.prototype, 'isVisible', { get: function () {
+    return this.isUnlocked && !this.quantity;
+}});
+
 Research.prototype.update = function () {
     if (this.isClicked) {
         this.purchase();
