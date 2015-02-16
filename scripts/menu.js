@@ -45,6 +45,7 @@ Menu.prototype.update = function () {
         }
         this.isActive = true;
     }
+    this.updateButtons();
 };
 
 Menu.prototype.draw = function () {
@@ -61,6 +62,7 @@ Menu.prototype.draw = function () {
     context.textAlign = 'left';
     context.font = '15px Arial';
     context.fillText(this.name, this.pos.x + 10, this.pos.y + 4);
+    this.drawButtons();
 };
 
 Menu.update = function () {
