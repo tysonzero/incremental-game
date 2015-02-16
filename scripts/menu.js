@@ -2,6 +2,7 @@ var Menu = function (options) {
     ButtonMixin.call(this, options);
     options = options || {};
     this.name = options.name;
+    this.buttons = options.buttons;
     this.isActive = options.isActive || false;
     this.size = options.size || {x: 100, y: 25};
 };
@@ -51,6 +52,6 @@ Menu.draw = function () {
 };
 
 Menu.objects = [
-    new Menu({name: 'Generators'}),
-    new Menu({name: 'Research', isActive: true})
+    new Menu({name: 'Generators', buttons: Generator.objects}),
+    new Menu({name: 'Research', buttons: Research.objects, isActive: true})
 ];
