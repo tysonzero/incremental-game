@@ -1,4 +1,4 @@
-var Menu = function (options) {
+var Tab = function (options) {
     ButtonMixin.call(this, options);
     options = options || {};
     this.name = options.name;
@@ -7,9 +7,9 @@ var Menu = function (options) {
     this.size = options.size || {x: 100, y: 25};
 };
 
-Object.defineProperties(Menu.prototype, ButtonMixin.prototype);
+Object.defineProperties(Tab.prototype, ButtonMixin.prototype);
 
-Menu.prototype.updateButtons = function () {
+Tab.prototype.updateButtons = function () {
     var offset,
         i;
     for (offset = 0, i = 0; i < this.buttons.length; i++) {
@@ -23,7 +23,7 @@ Menu.prototype.updateButtons = function () {
     }
 };
 
-Menu.prototype.drawButtons = function () {
+Tab.prototype.drawButtons = function () {
     var offset,
         i;
     for (offset = 0, i = 0; i < this.buttons.length; i++) {
@@ -37,18 +37,18 @@ Menu.prototype.drawButtons = function () {
     }
 };
 
-Menu.prototype.update = function () {
+Tab.prototype.update = function () {
     var i;
     if (this.isClicked) {
-        for (i = 0; i < Menu.objects.length; i++) {
-            Menu.objects[i].isActive = false;
+        for (i = 0; i < Tab.objects.length; i++) {
+            Tab.objects[i].isActive = false;
         }
         this.isActive = true;
     }
     this.updateButtons();
 };
 
-Menu.prototype.draw = function () {
+Tab.prototype.draw = function () {
     if (this.isActive) {
         context.fillStyle = '#666666';
     } else if (this.isFocused) {
@@ -65,7 +65,7 @@ Menu.prototype.draw = function () {
     this.drawButtons();
 };
 
-Menu.update = function () {
+Tab.update = function () {
     var i;
     for (i = 0; i < this.objects.length; i++) {
         this.objects[i].pos = {x: 10 + 110 * i, y: 10};
@@ -73,7 +73,7 @@ Menu.update = function () {
     }
 };
 
-Menu.draw = function () {
+Tab.draw = function () {
     var i;
     for (i = 0; i < this.objects.length; i++) {
         this.objects[i].pos = {x: 10 + 110 * i, y: 10};
@@ -81,7 +81,7 @@ Menu.draw = function () {
     }
 };
 
-Menu.objects = [
-    new Menu({name: 'Generators', buttons: Generator.objects}),
-    new Menu({name: 'Research', buttons: Research.objects, isActive: true})
+Tab.objects = [
+    new Tab({name: 'Generators', buttons: Generator.objects}),
+    new Tab({name: 'Research', buttons: Research.objects, isActive: true})
 ];

@@ -32,14 +32,14 @@ canvas.addEventListener('mousemove', function (event) {
 
 setInterval(
     function () {
-        Menu.update();
+        Tab.update();
         Resource.update();
 
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.fillStyle = '#FFFFFF';
         context.fillRect(0, 0, canvas.width, canvas.height);
 
-        Menu.draw();
+        Tab.draw();
         Resource.draw();
 
         lastKeys = keys.slice();
