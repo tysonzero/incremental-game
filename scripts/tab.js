@@ -40,8 +40,8 @@ Tab.prototype.drawButtons = function () {
 Tab.prototype.update = function () {
     var i;
     if (this.isClicked) {
-        for (i = 0; i < Tab.objects.length; i++) {
-            Tab.objects[i].isActive = false;
+        for (i = 0; i < menu.tabs.length; i++) {
+            menu.tabs[i].isActive = false;
         }
         this.isActive = true;
     }
@@ -63,22 +63,6 @@ Tab.prototype.draw = function () {
     context.font = '15px Arial';
     context.fillText(this.name, this.pos.x + 10, this.pos.y + 4);
     this.drawButtons();
-};
-
-Tab.update = function () {
-    var i;
-    for (i = 0; i < this.objects.length; i++) {
-        this.objects[i].pos = {x: 10 + 110 * i, y: 10};
-        this.objects[i].update();
-    }
-};
-
-Tab.draw = function () {
-    var i;
-    for (i = 0; i < this.objects.length; i++) {
-        this.objects[i].pos = {x: 10 + 110 * i, y: 10};
-        this.objects[i].draw();
-    }
 };
 
 Tab.objects = [
