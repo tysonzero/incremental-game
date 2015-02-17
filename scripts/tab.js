@@ -38,13 +38,6 @@ Tab.prototype.drawButtons = function () {
 };
 
 Tab.prototype.update = function () {
-    var i;
-    if (this.isClicked) {
-        for (i = 0; i < menu.tabs.length; i++) {
-            menu.tabs[i].isActive = false;
-        }
-        this.isActive = true;
-    }
     this.updateButtons();
 };
 
