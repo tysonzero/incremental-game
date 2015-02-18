@@ -38,11 +38,3 @@ Research.prototype.draw = function () {
         }
     }
 };
-
-Research.objects = [
-    new Research({name: 'Wooden Tools', resources: [Resource.objects[0]], costs: [100]}),
-    new Research({name: 'Stone Tools', resources: [Resource.objects[1]], costs: [100]}),
-    new Research({name: 'Copper Tools', resources: [Resource.objects[2]], costs: [100]})
-];
-Research.objects[1].requirements.push(Research.objects[0]);
-Research.objects[2].requirements.push(Research.objects[1]);

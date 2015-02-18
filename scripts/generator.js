@@ -63,12 +63,3 @@ Generator.prototype.draw = function () {
         }
     }
 };
-
-Generator.objects = [
-    new Generator({name: 'Wooden Axe', quantity: 1, resources: [Resource.objects[0]], costs: [150], outputs: [5], requirements: [Research.objects[0]]}),
-    new Generator({name: 'Wooden Pickaxe', resources: [Resource.objects[0], Resource.objects[1]], costs: [250, 0], outputs: [0, 2], requirements: [Research.objects[0]]}),
-    new Generator({name: 'Stone Axe', resources: [Resource.objects[0], Resource.objects[1]], costs: [50, 100], outputs: [10, 0], requirements: [Research.objects[1]]}),
-    new Generator({name: 'Stone Pickaxe', resources: [Resource.objects[0], Resource.objects[1], Resource.objects[2]], costs: [50, 200, 0], outputs: [0, 4, 1], requirements: [Research.objects[1]]}),
-    new Generator({name: 'Copper Axe', resources: [Resource.objects[0], Resource.objects[2]], costs: [50, 100], outputs: [25, 0], requirements: [Research.objects[2]]}),
-    new Generator({name: 'Copper Pickaxe', resources: [Resource.objects[0], Resource.objects[1], Resource.objects[2]], costs: [50, 0, 200], outputs: [0, 10, 3], requirements: [Research.objects[2]]})
-];

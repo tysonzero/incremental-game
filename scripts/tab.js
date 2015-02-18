@@ -57,8 +57,3 @@ Tab.prototype.draw = function () {
     context.fillText(this.name, this.pos.x + 10, this.pos.y + 4);
     this.drawButtons();
 };
-
-Tab.objects = [
-    new Tab({name: 'Generators', buttons: Generator.objects}),
-    new Tab({name: 'Research', buttons: Research.objects, isActive: true})
-];

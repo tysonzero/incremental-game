@@ -25,5 +25,3 @@ Menu.prototype.draw = function () {
         this.tabs[i].draw();
     }
 };
-
-menu = new Menu({tabs: Tab.objects});

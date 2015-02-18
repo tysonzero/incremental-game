@@ -38,9 +38,3 @@ Resource.draw = function () {
         }
     }
 };
-
-Resource.objects = [
-    new Resource({name: 'Wood', quantity: 100}),
-    new Resource({name: 'Stone'}),
-    new Resource({name: 'Copper'})
-];
