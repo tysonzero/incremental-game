@@ -5,6 +5,8 @@ var lastKeys = [];
 var buttons = [];
 var lastButtons = [];
 var mousePos = {};
+var update = function () {};
+var draw = function () {};
 
 canvas.width = 800;
 canvas.height = 600;
@@ -32,16 +34,9 @@ canvas.addEventListener('mousemove', function (event) {
 
 setInterval(
     function () {
-        menu.update();
-        Resource.update();
-
+        update();
         context.clearRect(0, 0, canvas.width, canvas.height);
-        context.fillStyle = '#FFFFFF';
-        context.fillRect(0, 0, canvas.width, canvas.height);
-
-        menu.draw();
-        Resource.draw();
-
+        draw();
         lastKeys = keys.slice();
         lastButtons = buttons.slice();
     },
