@@ -2,7 +2,7 @@ var Tab = function (options) {
     ButtonMixin.call(this, options);
     options = options || {};
     this.name = options.name;
-    this.buttons = options.buttons;
+    this.buttons = options.buttons || [];
     this.isActive = options.isActive || false;
     this.size = options.size || {x: 100, y: 25};
 };
