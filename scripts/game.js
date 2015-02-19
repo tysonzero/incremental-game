@@ -27,11 +27,13 @@
         new Tab({name: 'Research', buttons: Research.objects, isActive: true})
     ];
 
+    list = new List({items: Resource.objects});
+
     menu = new Menu({tabs: Tab.objects});
 
     update = function () {
         menu.update();
-        Resource.update();
+        list.update();
     };
 
     draw = function () {
@@ -39,6 +41,6 @@
         context.fillRect(0, 0, canvas.width, canvas.height);
 
         menu.draw();
-        Resource.draw();
+        list.draw();
     };
 })();

@@ -22,23 +22,3 @@ Resource.prototype.draw = function (position) {
     context.fillText(this.name + ': ' + Math.floor(this.quantity), 790, 9 + 75 * position);
     context.fillText(this.name + '/s: ' + Math.round(this.rate), 790, 44 + 75 * position);
 };
-
-Resource.update = function () {
-    var i;
-    for (i = 0; i < this.objects.length; i++) {
-        if (this.objects[i].isVisible) {
-            this.objects[i].update();
-        }
-    }
-};
-
-Resource.draw = function () {
-    var position,
-        i;
-    for (position = 0, i = 0; i < this.objects.length; i++) {
-        if (this.objects[i].isVisible) {
-            this.objects[i].draw(position);
-            position++;
-        }
-    }
-};
