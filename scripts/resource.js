@@ -26,7 +26,7 @@ Resource.prototype.draw = function (position) {
 Resource.update = function () {
     var i;
     for (i = 0; i < this.objects.length; i++) {
-        if (this.objects[i].quantity || this.objects[i].rate) {
+        if (this.objects[i].isVisible) {
             this.objects[i].update();
         }
     }
@@ -36,7 +36,7 @@ Resource.draw = function () {
     var position,
         i;
     for (position = 0, i = 0; i < this.objects.length; i++) {
-        if (this.objects[i].quantity || this.objects[i].rate) {
+        if (this.objects[i].isVisible) {
             this.objects[i].draw(position);
             position++;
         }
