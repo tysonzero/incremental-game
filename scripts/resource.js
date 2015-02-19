@@ -5,6 +5,10 @@ var Resource = function (options) {
     this.rate = 0;
 };
 
+Object.defineProperty(Resource.prototype, 'isVisible', { get: function () {
+    return this.quantity || this.rate;
+}});
+
 Resource.prototype.update = function () {
     this.rate = (this.quantity - this.lastQuantity) * 100;
     this.lastQuantity = this.quantity;
