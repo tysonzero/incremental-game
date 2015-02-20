@@ -61,26 +61,11 @@ Menu.prototype.drawButtons = function () {
 };
 
 Menu.prototype.update = function () {
-    var i,
-        j;
-    for (i = 0; i < this.tabs.length; i++) {
-        this.tabs[i].pos = {x: 10 + 110 * i, y: 10};
-        this.tabs[i].update();
-        if (this.tabs[i].isClicked) {
-            for (j = 0; j < this.tabs.length; j++) {
-                this.tabs[j].isActive = false;
-            }
-            this.tabs[i].isActive = true;
-        }
-    }
+    this.updateTabs();
     this.updateButtons();
 };
 
 Menu.prototype.draw = function () {
-    var i;
-    for (i = 0; i < this.tabs.length; i++) {
-        this.tabs[i].pos = {x: 10 + 110 * i, y: 10};
-        this.tabs[i].draw();
-    }
+    this.drawTabs();
     this.drawButtons();
 };
