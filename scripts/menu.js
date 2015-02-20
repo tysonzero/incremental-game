@@ -3,6 +3,40 @@ var Menu = function (options) {
     this.tabs = options.tabs;
 };
 
+Menu.prototype.updateButtons = function () {
+    var offset,
+        i,
+        j;
+    for (i = 0; i < this.tabs.length; i++) {
+        for (offset = 0, j = 0; j < this.tabs[i].buttons.length; j++) {
+            if (this.tabs[i].isActive && this.tabs[i].buttons[j].isVisible) {
+                this.tabs[i].buttons[j].pos = {x: 10, y: 45 + offset};
+                offset += this.tabs[i].buttons[j].size.y + 10;
+            } else {
+                this.tabs[i].buttons[j].pos = {};
+            }
+            this.tabs[i].buttons[j].update();
+        }
+    }
+};
+
+Menu.prototype.drawButtons = function () {
+    var offset,
+        i,
+        j;
+    for (i = 0; i < this.tabs.length; i++) {
+        for (offset = 0, j = 0; j < this.tabs[i].buttons.length; j++) {
+            if (this.tabs[i].isActive && this.tabs[i].buttons[j].isVisible) {
+                this.tabs[i].buttons[j].pos = {x: 10, y: 45 + offset};
+                offset += this.tabs[i].buttons[j].size.y + 10;
+            } else {
+                this.tabs[i].buttons[j].pos = {};
+            }
+            this.tabs[i].buttons[j].draw();
+        }
+    }
+};
+
 Menu.prototype.update = function () {
     var i,
         j;
@@ -16,6 +50,7 @@ Menu.prototype.update = function () {
             this.tabs[i].isActive = true;
         }
     }
+    this.updateButtons();
 };
 
 Menu.prototype.draw = function () {
@@ -24,4 +59,5 @@ Menu.prototype.draw = function () {
         this.tabs[i].pos = {x: 10 + 110 * i, y: 10};
         this.tabs[i].draw();
     }
+    this.drawButtons();
 };

@@ -9,37 +9,7 @@ var Tab = function (options) {
 
 Object.defineProperties(Tab.prototype, ButtonMixin.prototype);
 
-Tab.prototype.updateButtons = function () {
-    var offset,
-        i;
-    for (offset = 0, i = 0; i < this.buttons.length; i++) {
-        if (this.isActive && this.buttons[i].isVisible) {
-            this.buttons[i].pos = {x: 10, y: 45 + offset};
-            offset += this.buttons[i].size.y + 10;
-        } else {
-            this.buttons[i].pos = {};
-        }
-        this.buttons[i].update();
-    }
-};
-
-Tab.prototype.drawButtons = function () {
-    var offset,
-        i;
-    for (offset = 0, i = 0; i < this.buttons.length; i++) {
-        if (this.isActive && this.buttons[i].isVisible) {
-            this.buttons[i].pos = {x: 10, y: 45 + offset};
-            offset += this.buttons[i].size.y + 10;
-        } else {
-            this.buttons[i].pos = {};
-        }
-        this.buttons[i].draw();
-    }
-};
-
-Tab.prototype.update = function () {
-    this.updateButtons();
-};
+Tab.prototype.update = function () {};
 
 Tab.prototype.draw = function () {
     if (this.isActive) {
@@ -55,5 +25,4 @@ Tab.prototype.draw = function () {
     context.textAlign = 'left';
     context.font = '15px Arial';
     context.fillText(this.name, this.pos.x + 10, this.pos.y + 4);
-    this.drawButtons();
 };
