@@ -1,7 +1,7 @@
 var Research = function (options) {
     ResearchableMixin.call(this, options);
     PurchasableMixin.call(this, options);
-    ButtonMixin.call(this, options);
+    ClickableMixin.call(this, options);
     options = options || {};
     this.name = options.name;
     this.size = options.size || {x: 500, y: 45};
@@ -9,7 +9,7 @@ var Research = function (options) {
 
 Object.defineProperties(Research.prototype, ResearchableMixin.prototype);
 Object.defineProperties(Research.prototype, PurchasableMixin.prototype);
-Object.defineProperties(Research.prototype, ButtonMixin.prototype);
+Object.defineProperties(Research.prototype, ClickableMixin.prototype);
 
 Object.defineProperty(Research.prototype, 'isVisible', { get: function () {
     return this.isUnlocked && !this.quantity;

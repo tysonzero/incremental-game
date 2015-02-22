@@ -1,7 +1,7 @@
 var Generator = function (options) {
     ResearchableMixin.call(this, options);
     PurchasableMixin.call(this, options);
-    ButtonMixin.call(this, options);
+    ClickableMixin.call(this, options);
     options = options || {};
     this.name = options.name;
     this.outputs = options.outputs || [];
@@ -10,7 +10,7 @@ var Generator = function (options) {
 
 Object.defineProperties(Generator.prototype, ResearchableMixin.prototype);
 Object.defineProperties(Generator.prototype, PurchasableMixin.prototype);
-Object.defineProperties(Generator.prototype, ButtonMixin.prototype);
+Object.defineProperties(Generator.prototype, ClickableMixin.prototype);
 
 Object.defineProperty(Generator.prototype, 'costs', {
     get: function () {

@@ -1,5 +1,5 @@
 var Tab = function (options) {
-    ButtonMixin.call(this, options);
+    ClickableMixin.call(this, options);
     options = options || {};
     this.name = options.name;
     this.buttons = options.buttons || [];
@@ -7,7 +7,7 @@ var Tab = function (options) {
     this.size = options.size || {x: 100, y: 25};
 };
 
-Object.defineProperties(Tab.prototype, ButtonMixin.prototype);
+Object.defineProperties(Tab.prototype, ClickableMixin.prototype);
 
 Tab.prototype.update = function () {};
 
