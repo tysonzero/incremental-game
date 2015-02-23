@@ -9,7 +9,11 @@ var Tab = function (options) {
 
 Object.defineProperties(Tab.prototype, ClickableMixin.prototype);
 
-Tab.prototype.update = function () {};
+Tab.prototype.update = function () {
+    if (this.isClicked) {
+        this.isActive = true;
+    }
+};
 
 Tab.prototype.draw = function () {
     if (this.isActive) {
