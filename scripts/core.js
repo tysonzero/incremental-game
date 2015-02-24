@@ -16,7 +16,7 @@ window.addEventListener('keydown', function (event) {
 });
 
 window.addEventListener('keyup', function (event) {
-    keys[event.keyCode] = undefined;
+    delete keys[event.keyCode];
 });
 
 canvas.addEventListener('mousedown', function (event) {
@@ -24,7 +24,7 @@ canvas.addEventListener('mousedown', function (event) {
 });
 
 canvas.addEventListener('mouseup', function (event) {
-    buttons[event.button] = undefined;
+    delete buttons[event.button];
 });
 
 canvas.addEventListener('mousemove', function (event) {
