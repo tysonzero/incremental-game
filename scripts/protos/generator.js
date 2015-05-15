@@ -21,8 +21,8 @@ Object.defineProperty(Generator.prototype, 'costs', {
         }
         return costs;
     },
-    set: function (value) {
-        this._costs = value;
+    set: function (costs) {
+        this._costs = costs;
     }
 });
 
